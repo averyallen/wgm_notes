@@ -1,0 +1,442 @@
+{
+  "resourceType": "Subscription",
+  "status": "requested",
+  "contact": [
+    {
+      "system": "phone",
+      "value": "123-4567",
+      "use": "home",
+      "rank": 1,
+      "period": {
+        "start": "2018-01-01T00:00:00.000Z",
+        "end": "2019-01-01T00:00:00.000Z"
+      }
+    }
+  ],
+  "end": "2020-01-01T00:00:00Z",
+  "reason": "Seeded Subscription #1",
+  "criteria": "AllergyIntolerance?patient=12345",
+  "channel": {
+    "type": "rest-hook",
+    "endpoint": "https://example.com/allergy/intolerance/patient",
+    "payload": "application/fhir+json",
+    "header": [
+      "Authorization: Bearer secret-token-abc-123"
+    ]
+  }
+}
+
+{
+  "resourceType": "Subscription",
+  "status": "active",
+  "contact": [
+    {
+      "system": "phone",
+      "value": "123-4567",
+      "use": "home",
+      "rank": 1,
+      "period": {
+        "start": "2018-01-01T00:00:00.000Z",
+        "end": "2019-01-01T00:00:00.000Z"
+      }
+    }
+  ],
+  "end": "2020-01-01T00:00:00Z",
+  "reason": "Seeded Subscription #2",
+  "criteria": "AllergyIntolerance?patient=67890",
+  "channel": {
+    "type": "rest-hook",
+    "endpoint": "https://example.com/allergyintolerance/patient",
+    "payload": "application/fhir+json",
+    "header": [
+      "Authorization: Bearer secret-token-abc-123"
+    ]
+  }
+}
+
+{
+  "resourceType": "Subscription",
+  "status": "requested",
+  "contact": [
+    {
+      "system": "phone",
+      "value": "765-4321",
+      "use": "mobile",
+      "rank": 1,
+      "period": {
+        "start": "2018-01-01T00:00:00.000Z",
+        "end": "2019-01-01T00:00:00.000Z"
+      }
+    }
+  ],
+  "end": "2020-01-01T00:00:00Z",
+  "reason": "Seeded Subscription #3",
+  "criteria": "Appointment?patient=123123",
+  "channel": {
+    "type": "rest-hook",
+    "endpoint": "https://elpmaxe.com/mycoolendpoint",
+    "payload": "application/fhir+json",
+    "header": [
+      "Authorization: Bearer secret-token-def-456",
+      "X-Forwarded-For: https://elpmaxe.com"
+    ]
+  },
+  "tag": [
+    {
+      "system": "http://system.org",
+      "version": "1",
+      "code": "example-tag",
+      "display": "Example Tag",
+      "userSelected": true
+    },
+    {
+      "system": "http://system.org",
+      "version": "1",
+      "code": "example-tag-the-second",
+      "display": "Example Tag The Second",
+      "userSelected": false
+    }
+  ]
+}
+
+{
+  "resourceType": "Subscription",
+  "status": "off",
+  "contact": [
+    {
+      "system": "phone",
+      "value": "765-4321",
+      "use": "mobile",
+      "rank": 1,
+      "period": {
+        "start": "2018-01-01T00:00:00.000Z",
+        "end": "2019-01-01T00:00:00.000Z"
+      }
+    }
+  ],
+  "end": "2020-01-01T00:00:00Z",
+  "reason": "Seeded Subscription #4",
+  "criteria": "CarePlan?patient=123123",
+  "channel": {
+    "type": "rest-hook",
+    "endpoint": "https://elpmaxe.com/mycoolendpoint",
+    "payload": "application/fhir+json",
+    "header": [
+      "Authorization: Bearer secret-token-def-456",
+      "X-Forwarded-For: https://elpmaxe.com"
+    ]
+  },
+  "tag": [
+    {
+      "system": "http://system.org",
+      "version": "1",
+      "code": "example-tag",
+      "display": "Example Tag",
+      "userSelected": true
+    },
+    {
+      "system": "http://system.org",
+      "version": "1",
+      "code": "example-tag-the-second",
+      "display": "Example Tag The Second",
+      "userSelected": false
+    }
+  ]
+}
+
+{
+  "resourceType": "Subscription",
+  "status": "active",
+  "contact": [
+    {
+      "system": "phone",
+      "value": "765-4321",
+      "use": "mobile",
+      "rank": 1,
+      "period": {
+        "start": "2018-01-01T00:00:00.000Z",
+        "end": "2019-01-01T00:00:00.000Z"
+      }
+    }
+  ],
+  "end": "2020-01-01T00:00:00Z",
+  "reason": "Seeded Subscription #5",
+  "criteria": "Condition?patient=123123",
+  "channel": {
+    "type": "rest-hook",
+    "endpoint": "https://elpmaxe.com/mycoolendpoint",
+    "payload": "application/fhir+json",
+    "header": [
+      "Authorization: Bearer secret-token-def-456",
+      "X-Forwarded-For: https://elpmaxe.com"
+    ]
+  },
+  "tag": [
+    {
+      "system": "http://system.org",
+      "version": "1",
+      "code": "example-tag",
+      "display": "Example Tag",
+      "userSelected": true
+    },
+    {
+      "system": "http://system.org",
+      "version": "1",
+      "code": "example-tag-the-second",
+      "display": "Example Tag The Second",
+      "userSelected": false
+    }
+  ]
+}
+
+{
+  "resourceType": "Subscription",
+  "status": "active",
+  "contact": [
+    {
+      "system": "phone",
+      "value": "765-4321",
+      "use": "mobile",
+      "rank": 1,
+      "period": {
+        "start": "2018-01-01T00:00:00.000Z",
+        "end": "2019-01-01T00:00:00.000Z"
+      }
+    },
+    {
+      "system": "email",
+      "value": "webmaster@elpmaxe.com",
+      "use": "home",
+      "rank": 1,
+      "period": {
+        "start": "2018-01-01T00:00:00.000Z",
+        "end": "2019-01-01T00:00:00.000Z"
+      }
+    }
+  ],
+  "end": "2020-01-01T00:00:00Z",
+  "reason": "Seeded Subscription #6",
+  "criteria": "Device?patient=123123",
+  "channel": {
+    "type": "rest-hook",
+    "endpoint": "https://elpmaxe.com/myotherendpoint",
+    "payload": "application/fhir+json",
+    "header": [
+      "Authorization: Bearer secret-token-def-456"
+    ]
+  },
+  "tag": [
+    {
+      "system": "http://system.org",
+      "version": "1",
+      "code": "example-tag",
+      "display": "Example Tag",
+      "userSelected": true
+    }
+  ]
+}
+
+{
+  "resourceType": "Subscription",
+  "status": "active",
+  "contact": [
+    {
+      "system": "phone",
+      "value": "765-4321",
+      "use": "mobile",
+      "rank": 1,
+      "period": {
+        "start": "2018-01-01T00:00:00.000Z",
+        "end": "2019-01-01T00:00:00.000Z"
+      }
+    },
+    {
+      "system": "email",
+      "value": "example@example.com",
+      "use": "home",
+      "rank": 1,
+      "period": {
+        "start": "2018-01-01T00:00:00.000Z",
+        "end": "2019-01-01T00:00:00.000Z"
+      }
+    }
+  ],
+  "end": "2020-01-01T00:00:00Z",
+  "reason": "Seeded Subscription #7",
+  "criteria": "Device?patient=123123",
+  "channel": {
+    "type": "sms",
+    "endpoint": "765-4321"
+  },
+  "tag": [
+    {
+      "system": "http://system.org",
+      "version": "1",
+      "code": "example-tag",
+      "display": "Example Tag",
+      "userSelected": true
+    }
+  ]
+}
+
+{
+  "resourceType": "Subscription",
+  "status": "active",
+  "contact": [
+    {
+      "system": "phone",
+      "value": "000-0001",
+      "use": "home",
+      "rank": 1,
+      "period": {
+        "start": "2018-01-01T00:00:00.000Z",
+        "end": "2019-01-01T00:00:00.000Z"
+      }
+    },
+    {
+      "system": "email",
+      "value": "webmaster@elpmaxe.com",
+      "use": "home",
+      "rank": 1,
+      "period": {
+        "start": "2018-01-01T00:00:00.000Z",
+        "end": "2019-01-01T00:00:00.000Z"
+      }
+    }
+  ],
+  "end": "2020-01-01T00:00:00Z",
+  "reason": "Seeded Subscription #8",
+  "criteria": "DiagnosticReport?patient=1",
+  "channel": {
+    "type": "rest-hook",
+    "endpoint": "https://example.com/seededsubscriptions",
+    "payload": "application/fhir+xml",
+    "header": [
+      "Authorization: Bearer secret-token-ghi-789"
+    ]
+  },
+  "tag": [
+    {
+      "system": "http://example.org/fhir/cs/internal",
+      "version": "2",
+      "code": "code1",
+      "display": "Code 1",
+      "userSelected": false
+    },
+    {
+      "system": "http://example.org/fhir/cs/external",
+      "version": "3",
+      "code": "code",
+      "display": "Display",
+      "userSelected": true
+    }
+  ]
+}
+
+{
+  "resourceType": "Subscription",
+  "status": "error",
+  "contact": [
+    {
+      "system": "phone",
+      "value": "123-4567",
+      "use": "home",
+      "rank": 1,
+      "period": {
+        "start": "2018-01-01T00:00:00.000Z",
+        "end": "2019-01-01T00:00:00.000Z"
+      }
+    },
+    {
+      "system": "phone",
+      "value": "000-4567",
+      "use": "home",
+      "rank": 1,
+      "period": {
+        "start": "2018-01-01T00:00:00.000Z",
+        "end": "2019-01-01T00:00:00.000Z"
+      }
+    }
+  ],
+  "end": "2020-01-01T00:00:00Z",
+  "reason": "Seeded Subscription #9",
+  "criteria": "DocumentReference?patient=1",
+  "channel": {
+    "type": "rest-hook",
+    "endpoint": "https://example.com/seededsubscriptions",
+    "payload": "application/fhir+xml",
+    "header": [
+      "Authorization: Bearer secret-token-ghi-789"
+    ]
+  },
+  "tag": [
+    {
+      "system": "http://example.org/fhir/cs/internal",
+      "version": "2",
+      "code": "code2",
+      "display": "Code 2",
+      "userSelected": false
+    },
+    {
+      "system": "http://example.org/fhir/cs/external",
+      "version": "3",
+      "code": "code",
+      "display": "Display",
+      "userSelected": true
+    }
+  ]
+}
+
+{
+  "resourceType": "Subscription",
+  "status": "requested",
+  "contact": [
+    {
+      "system": "phone",
+      "value": "123-4567",
+      "use": "home",
+      "rank": 1,
+      "period": {
+        "start": "2018-01-01T00:00:00.000Z",
+        "end": "2019-01-01T00:00:00.000Z"
+      }
+    },
+    {
+      "system": "phone",
+      "value": "123-0000",
+      "use": "home",
+      "rank": 1,
+      "period": {
+        "start": "2018-01-01T00:00:00.000Z",
+        "end": "2019-01-01T00:00:00.000Z"
+      }
+    }
+  ],
+  "end": "2020-01-01T00:00:00Z",
+  "reason": "Seeded Subscription #10",
+  "criteria": "Encounter?patient=123123",
+  "channel": {
+    "type": "rest-hook",
+    "endpoint": "https://example.com/seededsubscriptions",
+    "payload": "application/fhir+xml",
+    "header": [
+      "Authorization: Bearer secret-token-ghi-789"
+    ]
+  },
+  "tag": [
+    {
+      "system": "http://example.org/fhir/cs/internal",
+      "version": "2",
+      "code": "code3",
+      "display": "Code 3",
+      "userSelected": false
+    },
+    {
+      "system": "http://example.org/fhir/cs/external",
+      "version": "3",
+      "code": "code",
+      "display": "Display",
+      "userSelected": true
+    }
+  ]
+}
