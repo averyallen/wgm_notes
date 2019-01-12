@@ -22,8 +22,6 @@ Example:
 GET https://fhir-open.stagingcerner.com/beta/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Subscription?<query_parameter\>=<value\>&<query_parameter\>=<value\>...
 
 Parameters:
-* add-tag (multiple values comma separated)
-  * https://fhir-open.stagingcerner.com/beta/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Subscription?add-tag=http%3A%2F%2Fexample.org%2Ffhir%2Fcs%2Finternal|bili-done
 * contact
   * https://fhir-open.stagingcerner.com/beta/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Subscription?contact=ext%204123
 * criteria
@@ -65,13 +63,7 @@ Example Body:
     "header": [
       "Authorization: Bearer secret-token-abc-123"
     ]
-  },
-  "tag": [
-    {
-      "system": "http://example.org/fhir/cs/internal",
-      "code": "bili-done"
-    }
-  ]
+  }
 }
 ```
 
@@ -104,13 +96,7 @@ Example Body (update status from requested to active):
     "header": [
       "Authorization: Bearer secret-token-abc-123"
     ]
-  },
-  "tag": [
-    {
-      "system": "http://example.org/fhir/cs/internal",
-      "code": "bili-done"
-    }
-  ]
+  }
 }
 ```
 

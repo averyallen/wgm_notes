@@ -80,23 +80,7 @@
       "Authorization: Bearer secret-token-def-456",
       "X-Forwarded-For: https://elpmaxe.com"
     ]
-  },
-  "tag": [
-    {
-      "system": "http://system.org",
-      "version": "1",
-      "code": "example-tag",
-      "display": "Example Tag",
-      "userSelected": true
-    },
-    {
-      "system": "http://system.org",
-      "version": "1",
-      "code": "example-tag-the-second",
-      "display": "Example Tag The Second",
-      "userSelected": false
-    }
-  ]
+  }
 }
 
 {
@@ -125,23 +109,7 @@
       "Authorization: Bearer secret-token-def-456",
       "X-Forwarded-For: https://elpmaxe.com"
     ]
-  },
-  "tag": [
-    {
-      "system": "http://system.org",
-      "version": "1",
-      "code": "example-tag",
-      "display": "Example Tag",
-      "userSelected": true
-    },
-    {
-      "system": "http://system.org",
-      "version": "1",
-      "code": "example-tag-the-second",
-      "display": "Example Tag The Second",
-      "userSelected": false
-    }
-  ]
+  }
 }
 
 {
@@ -170,23 +138,7 @@
       "Authorization: Bearer secret-token-def-456",
       "X-Forwarded-For: https://elpmaxe.com"
     ]
-  },
-  "tag": [
-    {
-      "system": "http://system.org",
-      "version": "1",
-      "code": "example-tag",
-      "display": "Example Tag",
-      "userSelected": true
-    },
-    {
-      "system": "http://system.org",
-      "version": "1",
-      "code": "example-tag-the-second",
-      "display": "Example Tag The Second",
-      "userSelected": false
-    }
-  ]
+  }
 }
 
 {
@@ -224,16 +176,7 @@
     "header": [
       "Authorization: Bearer secret-token-def-456"
     ]
-  },
-  "tag": [
-    {
-      "system": "http://system.org",
-      "version": "1",
-      "code": "example-tag",
-      "display": "Example Tag",
-      "userSelected": true
-    }
-  ]
+  }
 }
 
 {
@@ -267,16 +210,7 @@
   "channel": {
     "type": "sms",
     "endpoint": "765-4321"
-  },
-  "tag": [
-    {
-      "system": "http://system.org",
-      "version": "1",
-      "code": "example-tag",
-      "display": "Example Tag",
-      "userSelected": true
-    }
-  ]
+  }
 }
 
 {
@@ -314,23 +248,7 @@
     "header": [
       "Authorization: Bearer secret-token-ghi-789"
     ]
-  },
-  "tag": [
-    {
-      "system": "http://example.org/fhir/cs/internal",
-      "version": "2",
-      "code": "code1",
-      "display": "Code 1",
-      "userSelected": false
-    },
-    {
-      "system": "http://example.org/fhir/cs/external",
-      "version": "3",
-      "code": "code",
-      "display": "Display",
-      "userSelected": true
-    }
-  ]
+  }
 }
 
 {
@@ -368,23 +286,7 @@
     "header": [
       "Authorization: Bearer secret-token-ghi-789"
     ]
-  },
-  "tag": [
-    {
-      "system": "http://example.org/fhir/cs/internal",
-      "version": "2",
-      "code": "code2",
-      "display": "Code 2",
-      "userSelected": false
-    },
-    {
-      "system": "http://example.org/fhir/cs/external",
-      "version": "3",
-      "code": "code",
-      "display": "Display",
-      "userSelected": true
-    }
-  ]
+  }
 }
 
 {
@@ -422,21 +324,5 @@
     "header": [
       "Authorization: Bearer secret-token-ghi-789"
     ]
-  },
-  "tag": [
-    {
-      "system": "http://example.org/fhir/cs/internal",
-      "version": "2",
-      "code": "code3",
-      "display": "Code 3",
-      "userSelected": false
-    },
-    {
-      "system": "http://example.org/fhir/cs/external",
-      "version": "3",
-      "code": "code",
-      "display": "Display",
-      "userSelected": true
-    }
-  ]
+  }
 }
