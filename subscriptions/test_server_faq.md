@@ -114,9 +114,20 @@ Example Body (update status from requested to active):
 }
 ```
 
-## Implementation Notes
+## Notify
 
-Cerner's test server has the capability to notify only rest-hook Subscriptions (i.e. no websocket/email/sms/message)
+POST https://fhir-open.stagingcerner.com/beta/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Subscription/notify
+
+Example body:
+```
+Observation?code=http://loinc.org|1975-2
+```
+
+Cerner's test server has the capability to notify only rest-hook Subscriptions (i.e. no websocket/email/sms/message).
+
+Subscriptions with status `active`, channel.type `rest-hook`, and criteria that matches the POST body will be triggered. So, you could trigger all Observation subscriptions by POSTing `Observation`, or you could trigger only one subscription that you created by POSTing a very specific string that matches only its criteria.
+
+You will receive a 200 OK response when one or more subscriptions were triggered based on your POST body, and a 404 NOT FOUND response when no subscriptions were triggered.
 
 ## Example Subscription Data
 
