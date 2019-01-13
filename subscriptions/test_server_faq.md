@@ -113,6 +113,8 @@ Cerner's test server has the capability to notify only rest-hook Subscriptions (
 
 Subscriptions with status `active`, channel.type `rest-hook`, and criteria that matches the POST body will be triggered. So, you could trigger all Observation subscriptions by POSTing `Observation`, or you could trigger only one subscription that you created by POSTing a very specific string that matches only its criteria.
 
+When Cerner's test server sends notifications to the registered channel.endpoint, if a trailing slash is not present one will be added. For example, if your subscription's channel.endpoint is `http://test.com` a notification will be sent to `http://test.com/`.
+
 You will receive a 200 OK response when one or more subscriptions were triggered based on your POST body, and a 404 NOT FOUND response when no subscriptions were triggered.
 
 ## Example Subscription Data
