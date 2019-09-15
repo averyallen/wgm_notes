@@ -1,14 +1,14 @@
 # How to use Cerner's Test Server for Carequality
 
 Base server URL:  
-https://fhir-open.stagingcerner.com/beta/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/
+https://fhir-ehr.stagingcerner.com/beta/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/
 
 Token URL:  
-https://fhir-open.stagingcerner.com/beta/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Authorization/token
+https://fhir-ehr.stagingcerner.com/beta/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Authorization/token
 
 FHIR resource URL:  
-https://fhir-open.stagingcerner.com/beta/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/1316024  
-https://fhir-open.stagingcerner.com/beta/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient?name=peters
+https://fhir-ehr.stagingcerner.com/beta/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/1316024  
+https://fhir-ehr.stagingcerner.com/beta/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient?name=peters
 
 Make sure to request JSON format for FHIR resource requests using either:
 * ?_format=json
@@ -36,7 +36,7 @@ Issue a POST request to the server's token URL, passing:
 
 ```bash
 curl -X POST \
-  https://fhir-open.stagingcerner.com/beta/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Authorization/token \
+  https://fhir-ehr.stagingcerner.com/beta/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Authorization/token \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -d 'scope=system%2FPatient.read&grant_type=client_credentials&client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&client_assertion=<client assertion JWT>'
 ```
@@ -57,7 +57,7 @@ Issue a GET request to either of the server's FHIR resource URLs for Patient res
 
 ```bash
 curl -X GET \
-  'https://fhir-open.stagingcerner.com/beta/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient?_id=1316024' \
+  'https://fhir-ehr.stagingcerner.com/beta/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient?_id=1316024' \
   -H 'Accept: application/fhir+json' \
   -H 'Authorization: Bearer <access token received from previous step>' \
 ```
