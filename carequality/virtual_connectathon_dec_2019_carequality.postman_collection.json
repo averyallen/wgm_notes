@@ -1,0 +1,152 @@
+{
+  "info": {
+    "_postman_id": "3da7286e-1900-4fc8-9189-ea3dd701726a",
+    "name": "virtual_connectathon_dec_2019_carequality",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Exchange client assertion for access token",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "1860cb59-7dfa-44b0-b739-22cea2a36628",
+            "exec": [
+              "var jsonData = JSON.parse(responseBody);",
+              "",
+              "postman.setEnvironmentVariable(\"dispensedJWT\", jsonData.access_token);",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/x-www-form-urlencoded",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "scope",
+              "value": "system/Patient.read",
+              "type": "text"
+            },
+            {
+              "key": "grant_type",
+              "value": "client_credentials",
+              "type": "text"
+            },
+            {
+              "key": "client_assertion_type",
+              "value": "urn:ietf:params:oauth:client-assertion-type:jwt-bearer",
+              "type": "text"
+            },
+            {
+              "key": "client_assertion",
+              "value": "<client assertion JWT>",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://fhir-ehr.stagingcerner.com/beta/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Authorization/token",
+          "protocol": "https",
+          "host": [
+            "fhir-ehr",
+            "stagingcerner",
+            "com"
+          ],
+          "path": [
+            "beta",
+            "0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca",
+            "Authorization",
+            "token"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Exchange access token for FHIR data (read)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/fhir+json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{dispensedJWT}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://fhir-ehr.stagingcerner.com/beta/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient/1316024",
+          "protocol": "https",
+          "host": [
+            "fhir-ehr",
+            "stagingcerner",
+            "com"
+          ],
+          "path": [
+            "beta",
+            "0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca",
+            "Patient",
+            "1316024"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Exchange access token for FHIR data (search)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/fhir+json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{dispensedJWT}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://fhir-ehr.stagingcerner.com/beta/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Patient?name=peters",
+          "protocol": "https",
+          "host": [
+            "fhir-ehr",
+            "stagingcerner",
+            "com"
+          ],
+          "path": [
+            "beta",
+            "0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca",
+            "Patient"
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "peters"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
