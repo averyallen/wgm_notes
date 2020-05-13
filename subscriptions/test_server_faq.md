@@ -24,8 +24,6 @@ GET https://fhir-open.stagingcerner.com/beta/0b8a0111-e8e6-4c26-a91c-5069cbc6b1c
 Parameters:
 * contact
   * https://fhir-open.stagingcerner.com/beta/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Subscription?contact=ext%204123
-* criteria
-  * https://fhir-open.stagingcerner.com/beta/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Subscription?criteria=Observation%3Fcode%3Dhttp%3A%2F%2Floinc.org%7C1975-2
 * _id (multiple values comma separated)
   * https://fhir-open.stagingcerner.com/beta/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Subscription?_id=1,2
 * payload
@@ -47,23 +45,37 @@ Example Body:
 {
   "resourceType": "Subscription",
   "status": "requested",
+  "topic": {
+    "reference": "SubscriptionTopic/admission"
+  },
   "contact": [
     {
       "system": "phone",
-      "value": "ext 4123"
+      "value": "ext 4123",
+      "use": "work"
     }
   ],
-  "end": "2021-01-01T00:00:00Z",
-  "reason": "Monitor new neonatal function",
-  "criteria": "Observation?code=http://loinc.org|1975-2",
-  "channel": {
-    "type": "rest-hook",
-    "endpoint": "https://biliwatch.com/customers/mount-auburn-miu/on-result",
-    "payload": "application/fhir+json",
-    "header": [
-      "Authorization: Bearer secret-token-abc-123"
-    ]
-  }
+  "end": "2020-05-13T16:18:29.426Z",
+  "reason": "Monitor Patient Admissions for specific patient",
+  "filterBy": [
+    {
+      "searchParamName": "patient",
+      "searchModifier": "=",
+      "value": "Patient/1316024"
+    }
+  ],
+  "channelType": {
+    "code": "rest-hook",
+    "display": "Rest Hook",
+    "system": "http://terminology.hl7.org/CodeSystem/subscription-channel-type"
+  },
+  "endpoint": "https://addmission-tracker-example.com/on-admission",
+  "header": [
+    "Authorization: Bearer some-secret-token"
+   ],
+  "heartbeatPeriod": 60,
+  "contentType": "application/fhir+json",
+  "content": "id-only"
 }
 ```
 
@@ -80,23 +92,37 @@ Example Body (update status from requested to active):
 {
   "resourceType": "Subscription",
   "status": "active",
+  "topic": {
+    "reference": "SubscriptionTopic/admission"
+  },
   "contact": [
     {
       "system": "phone",
-      "value": "ext 4123"
+      "value": "ext 4123",
+      "use": "work"
     }
   ],
-  "end": "2021-01-01T00:00:00Z",
-  "reason": "Monitor new neonatal function",
-  "criteria": "Observation?code=http://loinc.org|1975-2",
-  "channel": {
-    "type": "rest-hook",
-    "endpoint": "https://biliwatch.com/customers/mount-auburn-miu/on-result",
-    "payload": "application/fhir+json",
-    "header": [
-      "Authorization: Bearer secret-token-abc-123"
-    ]
-  }
+  "end": "2020-05-13T16:18:29.426Z",
+  "reason": "Monitor Patient Admissions for specific patient",
+  "filterBy": [
+    {
+      "searchParamName": "patient",
+      "searchModifier": "=",
+      "value": "Patient/1316024"
+    }
+  ],
+  "channelType": {
+    "code": "rest-hook",
+    "display": "Rest Hook",
+    "system": "http://terminology.hl7.org/CodeSystem/subscription-channel-type"
+  },
+  "endpoint": "https://addmission-tracker-example.com/on-admission",
+  "header": [
+    "Authorization: Bearer some-secret-token"
+   ],
+  "heartbeatPeriod": 60,
+  "contentType": "application/fhir+json",
+  "content": "id-only"
 }
 ```
 
@@ -104,18 +130,27 @@ Example Body (update status from requested to active):
 
 POST https://fhir-open.stagingcerner.com/beta/0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca/Subscription/notify
 
-Example body:
+Body that triggers admission event for Patient 1316024 and Encounter 1221233:
 ```
-Observation?code=http://loinc.org|1975-2
+EVN|A04|1
+PID|123|1316024|1221233
 ```
 
-Cerner's test server has the capability to notify only rest-hook Subscriptions (i.e. no websocket/email/sms/message).
+Body that triggers lab event for Patient 1316024 and Observation 213443:
+```
+EVN|R01|1
+PID|123|1316024|213443
+```
 
-Subscriptions with status `active`, channel.type `rest-hook`, and criteria that matches the POST body will be triggered. So, you could trigger all Observation subscriptions by POSTing `Observation`, or you could trigger only one subscription that you created by POSTing a very specific string that matches only its criteria.
+Cerner's test server has the capability to notify only rest-hook Subscriptions (i.e. no websocket/email/message). Notifications are not currently supported through resource creation. Instead, notifications are triggered through the /notify endpoint.
 
-When Cerner's test server sends notifications to the registered channel.endpoint, if a trailing slash is not present one will be added. For example, if your subscription's channel.endpoint is `http://test.com` a notification will be sent to `http://test.com/`.
+The notify endpoint expects a body including either an [A04](https://hl7-definition.caristix.com/v2/HL7v2.3/TriggerEvents/ADT_A04) or [R01](https://hl7-definition.caristix.com/v2/HL7v2.3/TriggerEvents/ORU_R01) HL7 V2 message as seen in the body examples above. 
 
-You will receive a 200 OK response when one or more subscriptions were triggered based on your POST body, and a 404 NOT FOUND response when no subscriptions were triggered.
+Subscriptions with status `active`, channelType with code `rest-hook`, and filterBy criteria that match the POST body will be triggered. By altering the filterBy field of a subscription, consumers can control how specific the criteria for receiving an event notification is.
+
+When Cerner's test server sends notifications to the registered Subscription.endpoint, if a trailing slash is not present one will be added. For example, if your subscription's channel.endpoint is `http://test.com` a notification will be sent to `http://test.com/`.
+
+You will receive a 200 OK response after all qualifying subscriptions are notified of the event.
 
 ## Example Subscription Data
 
