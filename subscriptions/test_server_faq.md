@@ -148,7 +148,7 @@ The notify endpoint expects a body including either an [A04](https://hl7-definit
 
 Subscriptions with status `active`, channelType with code `rest-hook`, and filterBy criteria that match the POST body will be triggered. By altering the filterBy field of a subscription, consumers can control how specific the criteria for receiving an event notification is.
 
-When Cerner's test server sends notifications to the registered Subscription.endpoint, if a trailing slash is not present one will be added. For example, if your subscription's channel.endpoint is `http://test.com` a notification will be sent to `http://test.com/`.
+When Cerner's test server sends notifications to the registered Subscription.endpoint, if a trailing slash is not present one will be added. For example, if your subscription's endpoint field is `http://test.com` a notification will be sent to `http://test.com/`.
 
 You will receive a 200 OK response after all qualifying subscriptions are notified of the event.
 
