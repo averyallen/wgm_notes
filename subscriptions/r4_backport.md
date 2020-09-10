@@ -150,6 +150,3 @@ Example Body (update status from requested to active):
 
 See [notifications](notifications.md) documentation.
 
-## Example Subscription Data
-
-[example_subscriptions.txt](example_subscriptions.txt)
