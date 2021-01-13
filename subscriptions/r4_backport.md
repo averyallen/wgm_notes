@@ -35,7 +35,7 @@ Lists supported Topics
 
 ## Backport Subscription Status Operation
 
-GET https://fhir-open.stagingcerner.com/beta/ec2458f2-1e24-41c8-b71b-0e701af7583d/Subscription/<id/>/$status
+GET https://fhir-open.stagingcerner.com/beta/ec2458f2-1e24-41c8-b71b-0e701af7583d/Subscription/<id\>/$status
 
 Example:
 * https://fhir-open.stagingcerner.com/beta/ec2458f2-1e24-41c8-b71b-0e701af7583d/Subscription/94ba5a71-fc89-4650-9e52-9036d8847a69/$status
