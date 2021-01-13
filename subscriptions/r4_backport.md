@@ -1,10 +1,10 @@
 # How to use Cerner's Test Server for the R4 Subscriptions Backport
 
 Base server URL:  
-https://fhir-open.stagingcerner.com/beta/r4/dacc6494-e336-45ad-8729-b789ff8663c6/
+https://fhir-open.stagingcerner.com/beta/ec2458f2-1e24-41c8-b71b-0e701af7583d/
 
 Subscription resource:  
-https://fhir-open.stagingcerner.com/beta/r4/dacc6494-e336-45ad-8729-b789ff8663c6/Subscription
+https://fhir-open.stagingcerner.com/beta/ec2458f2-1e24-41c8-b71b-0e701af7583d/Subscription
 
 Make sure to request json format for show/search using either:
 * ?_format=json
@@ -13,7 +13,7 @@ Make sure to request json format for show/search using either:
 
 ## Backport Topic Canonical Operation
 
-GET https://fhir-open.stagingcerner.com/beta/r4/dacc6494-e336-45ad-8729-b789ff8663c6/Subscription/$topic-list
+GET https://fhir-open.stagingcerner.com/beta/ec2458f2-1e24-41c8-b71b-0e701af7583d/Subscription/$topic-list
 
 Lists supported Topics
 
@@ -33,17 +33,63 @@ Lists supported Topics
 }
 ```
 
-## Show
+## Backport Subscription Status Operation
 
-GET https://fhir-open.stagingcerner.com/beta/r4/dacc6494-e336-45ad-8729-b789ff8663c6/Subscription/<id\>
+GET https://fhir-open.stagingcerner.com/beta/ec2458f2-1e24-41c8-b71b-0e701af7583d/Subscription/<id/>/$status
 
 Example:
-* https://fhir-open.stagingcerner.com/beta/r4/dacc6494-e336-45ad-8729-b789ff8663c6/Subscription/d6340e59-1ec9-4b12-8979-eaba2def73da
+* https://fhir-open.stagingcerner.com/beta/ec2458f2-1e24-41c8-b71b-0e701af7583d/Subscription/94ba5a71-fc89-4650-9e52-9036d8847a69/$status
+
+Shows Subscription Status
+
+```json
+{
+    "resourceType": "Parameters",
+    "parameter": [
+        {
+            "name": "subscription",
+            "valueReference": {
+                "reference": "https://fhir-open.stagingcerner.com/beta/ec2458f2-1e24-41c8-b71b-0e701af7583d/Subscription/94ba5a71-fc89-4650-9e52-9036d8847a69"
+            }
+        },
+        {
+            "name": "topic",
+            "valueCanonical": "http://argonautproject.org/subscription-ig/SubscriptionTopic/admission"
+        },
+        {
+            "name": "status",
+            "valueCode": "active"
+        },
+        {
+            "name": "type",
+            "valueCode": "query-status"
+        },
+        {
+            "name": "events-since-subscription-start",
+            "valueUnsignedInt": 0
+        },
+        {
+            "name": "events-in-notification",
+            "valueUnsignedInt": 0
+        }
+    ]
+}
+```
+
+
+## Backport Topic
+
+## Show
+
+GET https://fhir-open.stagingcerner.com/beta/ec2458f2-1e24-41c8-b71b-0e701af7583d/Subscription/<id\>
+
+Example:
+* https://fhir-open.stagingcerner.com/beta/ec2458f2-1e24-41c8-b71b-0e701af7583d/Subscription/d6340e59-1ec9-4b12-8979-eaba2def73da
 
 
 ## Create
 
-POST https://fhir-open.stagingcerner.com/beta/r4/dacc6494-e336-45ad-8729-b789ff8663c6/Subscription  
+POST https://fhir-open.stagingcerner.com/beta/ec2458f2-1e24-41c8-b71b-0e701af7583d/Subscription  
 Content-Type: application/fhir+json
 
 Example Body:
@@ -94,7 +140,7 @@ Example Body:
 
 ## Update
 
-PUT https://fhir-open.stagingcerner.com/beta/r4/dacc6494-e336-45ad-8729-b789ff8663c6/Subscription/<id\>  
+PUT https://fhir-open.stagingcerner.com/beta/ec2458f2-1e24-41c8-b71b-0e701af7583d/Subscription/<id\>  
 Content-Type: application/fhir+json  
 If-Match: W/"<version_id\>"
 
@@ -149,4 +195,3 @@ Example Body (update status from requested to active):
 ## Triggering Notifications
 
 See [notifications](notifications.md) documentation.
-
