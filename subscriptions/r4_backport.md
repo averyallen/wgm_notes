@@ -1,10 +1,10 @@
 # How to use Cerner's Test Server for the R4 Subscriptions Backport
 
 Base server URL:  
-https://fhir-open.stagingcerner.com/beta/ec2458f2-1e24-41c8-b71b-0e701af7583d/
+https://fhir-ehr.stagingcerner.com/beta/ec2458f2-1e24-41c8-b71b-0e701af7583d/
 
 Subscription resource:  
-https://fhir-open.stagingcerner.com/beta/ec2458f2-1e24-41c8-b71b-0e701af7583d/Subscription
+https://fhir-ehr.stagingcerner.com/beta/ec2458f2-1e24-41c8-b71b-0e701af7583d/Subscription
 
 Make sure to request json format for show/search using either:
 * ?_format=json
@@ -13,7 +13,7 @@ Make sure to request json format for show/search using either:
 
 ## Backport Topic Canonical Operation
 
-GET https://fhir-open.stagingcerner.com/beta/ec2458f2-1e24-41c8-b71b-0e701af7583d/Subscription/$topic-list
+GET https://fhir-ehr.stagingcerner.com/beta/ec2458f2-1e24-41c8-b71b-0e701af7583d/Subscription/$topic-list
 
 Lists supported Topics
 
@@ -35,10 +35,10 @@ Lists supported Topics
 
 ## Backport Subscription Status Operation
 
-GET https://fhir-open.stagingcerner.com/beta/ec2458f2-1e24-41c8-b71b-0e701af7583d/Subscription/<id\>/$status
+GET https://fhir-ehr.stagingcerner.com/beta/ec2458f2-1e24-41c8-b71b-0e701af7583d/Subscription/<id\>/$status
 
 Example:
-* https://fhir-open.stagingcerner.com/beta/ec2458f2-1e24-41c8-b71b-0e701af7583d/Subscription/94ba5a71-fc89-4650-9e52-9036d8847a69/$status
+* https://fhir-ehr.stagingcerner.com/beta/ec2458f2-1e24-41c8-b71b-0e701af7583d/Subscription/94ba5a71-fc89-4650-9e52-9036d8847a69/$status
 
 Shows Subscription Status
 
@@ -49,7 +49,7 @@ Shows Subscription Status
         {
             "name": "subscription",
             "valueReference": {
-                "reference": "https://fhir-open.stagingcerner.com/beta/ec2458f2-1e24-41c8-b71b-0e701af7583d/Subscription/94ba5a71-fc89-4650-9e52-9036d8847a69"
+                "reference": "https://fhir-ehr.stagingcerner.com/beta/ec2458f2-1e24-41c8-b71b-0e701af7583d/Subscription/94ba5a71-fc89-4650-9e52-9036d8847a69"
             }
         },
         {
@@ -81,15 +81,15 @@ Shows Subscription Status
 
 ## Show
 
-GET https://fhir-open.stagingcerner.com/beta/ec2458f2-1e24-41c8-b71b-0e701af7583d/Subscription/<id\>
+GET https://fhir-ehr.stagingcerner.com/beta/ec2458f2-1e24-41c8-b71b-0e701af7583d/Subscription/<id\>
 
 Example:
-* https://fhir-open.stagingcerner.com/beta/ec2458f2-1e24-41c8-b71b-0e701af7583d/Subscription/d6340e59-1ec9-4b12-8979-eaba2def73da
+* https://fhir-ehr.stagingcerner.com/beta/ec2458f2-1e24-41c8-b71b-0e701af7583d/Subscription/d6340e59-1ec9-4b12-8979-eaba2def73da
 
 
 ## Create
 
-POST https://fhir-open.stagingcerner.com/beta/ec2458f2-1e24-41c8-b71b-0e701af7583d/Subscription  
+POST https://fhir-ehr.stagingcerner.com/beta/ec2458f2-1e24-41c8-b71b-0e701af7583d/Subscription  
 Content-Type: application/fhir+json
 
 Example Body:
@@ -140,7 +140,7 @@ Example Body:
 
 ## Update
 
-PUT https://fhir-open.stagingcerner.com/beta/ec2458f2-1e24-41c8-b71b-0e701af7583d/Subscription/<id\>  
+PUT https://fhir-ehr.stagingcerner.com/beta/ec2458f2-1e24-41c8-b71b-0e701af7583d/Subscription/<id\>  
 Content-Type: application/fhir+json  
 If-Match: W/"<version_id\>"
 
